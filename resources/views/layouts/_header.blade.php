@@ -19,8 +19,29 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://">登陆</a></li>
-                <li><a href="http://">注册</a></li>
+                @guest
+                <li><a href="{{ route('login') }}">登陆</a></li>
+                <li><a href="{{ route('register') }}">注册</a></li>
+                @else
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="user-avatar pull-left" style="margin-right: 8px; margin-top: -5px;">
+                            <img src="https://fsdhubcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" width="30px" height="30xp" alt="" class="img-responsive img-circle">
+                        </span>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">退出登录</a>
+
+                            <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @endguest
             </ul>
         </div>
     </div>
