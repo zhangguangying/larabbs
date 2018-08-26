@@ -36,13 +36,25 @@
                     </a>
 
                     <ul class="dropdown-menu">
-
                         <li>
-                            <a href="{{ route('users.edit', Auth::id()) }}">编辑资料</a>
+                            <a href="{{ route('users.show', Auth::id()) }}">
+                                <span class="glyphicon glyphicon-user"></span>
+                                个人中心
+                            </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">退出登录</a>
+                            <a href="{{ route('users.edit', Auth::id()) }}">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                编辑资料
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                退出登录
+                            </a>
 
                             <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
                                 {{ csrf_field() }}
