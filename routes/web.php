@@ -30,7 +30,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // 用户
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+
+// 话题
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
 // 分类
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
