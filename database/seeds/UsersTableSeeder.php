@@ -39,5 +39,11 @@ class UsersTableSeeder extends Seeder
         $user->password = bcrypt('123456');
         $user->avatar = 'https://fsdhubcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
         $user->save();
+        // 为1号用户分配角色
+        $user->assignRole('Founder');
+
+        // 为2号用户分配角色
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
     }
 }
