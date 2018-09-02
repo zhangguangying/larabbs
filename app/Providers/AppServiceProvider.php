@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
 
         //
         \Carbon\Carbon::setLocale('zh');
+
+        \Horizon::auth(function ($request) {
+            return \Auth::user()->hasRole('Founder');
+        });
     }
 
     /**
@@ -29,5 +33,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        if (app()->isLocal()) {
+            $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
+        }
     }
 }
