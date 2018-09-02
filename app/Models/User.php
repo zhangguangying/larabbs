@@ -56,12 +56,6 @@ class User extends Authenticatable
     {
         return $this->id === $model->user_id;
     }
-
-    // public function notifications()
-    // {
-    //     return $this->hasMany(Notification::class);
-    // }
-
     public function markAsRead()
     {
         $this->notification_count = 0;
