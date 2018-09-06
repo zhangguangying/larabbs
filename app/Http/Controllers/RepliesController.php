@@ -14,7 +14,7 @@ class RepliesController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-
+	
 	public function store(ReplyRequest $request, Reply $reply)
 	{
 		$reply->user_id = Auth::id();
